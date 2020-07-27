@@ -131,24 +131,29 @@ class App extends Component {
     this.setState({route:route})
   }
   render (){
+    const onRouteChange = this.onRouteChange;
+    const onButtonSubmit = this.onButtonSubmit;
+    const onInputChange = this.onInputChange;
+    const {isSignedIn, route, user, boxes, inputUrl} = this.state;
+    const loadUser = this.loadUser;
     return(
       <div className="App">
       <Particles  className='particles' params={ParticlesOption}/>
         <Navigation
-          onRouteChange={this.onRouteChange}
-          isSignedIn={this.state.isSignedIn}/>
-        {this.state.route === 'signin'
-        ? <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-        :(this.state.route ==='home'
+          onRouteChange={onRouteChange}
+          isSignedIn={isSignedIn}/>
+        {route === 'signin'
+        ? <SignIn loadUser={loadUser} onRouteChange={onRouteChange}/>
+        :(route ==='home'
           ?<div>
             <Logo/ >
-            <Rank name={this.state.user.name} entries={this.state.user.entries}/>
+            <Rank name={user.name} entries={user.entries}/>
             <ImageLinkForm
-              onInputChange={this.onInputChange}
-              onButtonSubmit={this.onButtonSubmit}/>
-            <FaceRecognition src={this.state.inputUrl} boxes={this.state.boxes} />
+              onInputChange={onInputChange}
+              onButtonSubmit={onButtonSubmit}/>
+            <FaceRecognition src={inputUrl} boxes={boxes} />
           </div>
-          :<Register loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+          :<Register loadUser={loadUser} onRouteChange={onRouteChange} />
           )
         }
       </div>
