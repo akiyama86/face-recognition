@@ -13,8 +13,6 @@ import './App.css';
 import './components/Logo/Logo.css';
 import 'tachyons';
 
-
-
 const initialState= {
     input : '',
     inputUrl : '' ,
