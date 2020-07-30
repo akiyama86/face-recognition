@@ -42,7 +42,8 @@ class Register extends React.Component{
 				console.log(user);
 				this.props.onRouteChange('home');
 			}
-		});
+		})
+		.catch(console.log);
 	}
 
 	render(){
